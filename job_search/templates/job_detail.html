@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <div class="col-md-8 offset-md-2">
+        <h1>{{ job.title }}</h1>
+        <medium>
+            {{ job.company }} | {{ job.city }}, {{ job.state }}
+        </medium>
+        </br>
+        <small>
+            Date Posted: 'DATE JOB WAS POSTED'
+        </small></br></br>
+        <a href="{{ job.company_url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apply on Company Site</a>
+        <hr>
+        <p>{{ job.description | safe | linebreaks }}</p>
+        </br>
+        <a href="{{ job.company_url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Apply on Company Site</a></br></br></br>
+    </div>
+{% endblock %}

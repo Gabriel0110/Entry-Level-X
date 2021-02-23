@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    </br>
+    <h1 style="text-align:center">Entry-Level 'X'</h1>
+    <h3 style="text-align:center">Whatever your profession, we help you get started.</h3></br></br>
+
+    <form id="search-bar" action="/job_search/" method="post">
+        {% csrf_token %}
+        {{ form }}</br>
+        <input type="submit" value="Search" class="btn btn-primary" style="margin:0px auto; display:block;">
+    </form>
+
+    </br></br>
+
+    <div class="row">
+    {% if query %}
+        {% if results %}
+            {% for result in results %}
+                <div class="col-md-4">
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ result.title }}</h5>
+                            <h6 class="card-company">{{ result.company }}</h6>
+                            <h7 class="card-location">{{ result.city }}, {{ result.state }}</h7>
+                            </br></br>
+                            <a href="{% url 'job_detail' result.pk %}" class="btn btn-primary">View Job</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h1 style="text-align:center">No jobs found.</h1>
+        {% endif %}
+    {% else %}
+        {% for job in jobs %}
+                <div class="col-md-4">
+                    <div class="card mb-2">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ job.title }}</h5>
+                            <h6 class="card-company">{{ job.company }}</h6>
+                            <h7 class="card-location">{{ job.city }}, {{ job.state }}</h7>
+                            </br></br>
+                            <a href="{% url 'job_detail' job.pk %}" class="btn btn-primary">View Job</a>
+                        </div>
+                    </div>
+                </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}
