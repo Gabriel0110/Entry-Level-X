@@ -43,7 +43,7 @@ def insert_row(title, company, city, state, desc):
         print(e)
 
 def main():
-    pages = 20 # adjust as necessary
+    pages = 50 # adjust as necessary
 
     banned = ['senior', 'sr', 'sr.', 'mid-level', 'staff', 'manager', 'lead', '3 years', 
     '4 years', '5 years', '6 years', '7 years', '8 years', '9 years', '10 years', '3+', '4+', 
@@ -63,7 +63,7 @@ def main():
             for item in jsonResponse["results"]:
                 contents = item["contents"].lower().split(' ')
                 
-                if any(term in item["contents"].lower() for term in banned) or any(term in item for item in contents for term in banned):
+                if any(term in item["contents"].lower() for term in banned) or any(term in item for item in contents for term in banned) or any(term in item["name"] for term in banned):
                     pass
                 else:
                     job_title = item["name"]

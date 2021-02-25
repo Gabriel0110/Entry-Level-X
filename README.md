@@ -3,3 +3,15 @@ A Django web development project to aggregate entry-level jobs making it easier 
 
 The idea for this project was from my friend Christian Iannone and myself as we both struggle with finding legitimately entry-level jobs in tech.  I'm currently learning Django on my own, and I thought this was a great project to learn via hands-on experience.
 
+The jobs are aggregated from public job aggregation APIs (Indeed, TheMuse, GitHub Jobs, etc).  It has currently been tested with jobs pulled from TheMuse via their API.  The Python scripts located in the 'utility_scripts' folder make the API calls, load the jobs into a CSV file for review and approval, and push them into the SQLite database linked to the Django server.
+
+Until better filtering algorithms and methods are instrumented to sort out the non-entry-level jobs, it is essential to have a human-in-the-loop step in the process to review the jobs pulled by the APIs to ensure jobs being pushed to the database are legitimately "entry-level."  One of the hardest problems with this project so far, and likely in the continued future, is the filtering aspect.  I would argue that precise and accurate filtering is one of the most crucial pieces to this project, and I would be hesitant to launch with anything greater than a 3-5% false positive rate.  Otherwise, this project is just another aggregation site that fails to solve the same problem that others have.
+
+Home Page  
+![](/image1.PNG)  
+
+Job Detail Page  
+![](/image2.PNG)  
+
+Search Result Example  
+![](/image3.PNG)
